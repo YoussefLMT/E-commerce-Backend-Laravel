@@ -20,6 +20,8 @@ Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 
 
+
+Route::get('products', [ProductController::class, 'getProducts']);
 Route::post('add-product', [ProductController::class, 'addProduct']);
 
 

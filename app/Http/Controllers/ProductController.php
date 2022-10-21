@@ -10,6 +10,18 @@ use Illuminate\Support\Facades\Validator;
 class ProductController extends Controller
 {
     
+    public function getProducts()
+    {
+        $products = Product::all();
+
+        return response()->json([
+            'status' => 200,
+            'products' => $products,
+        ]);
+    }
+
+
+    
     public function addProduct(Request $request)
     {
         $validator = Validator::make($request->all(), [
