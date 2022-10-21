@@ -87,4 +87,66 @@ class ProductController extends Controller
             ]);
         }
     }
+
+
+
+    public function updateProduct(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'name'=> 'required',
+            'price'=> 'required',
+            'quantity' => 'required',
+            'description' => 'required',
+            // 'image' => 'required|image|mimes:jpeg,png,jpg',
+        ]);
+
+
+        if($validator->fails()){
+
+            return response()->json([
+                'status' => 422,
+                'validation_err' => $validator->messages(),
+            ]);
+
+        }else{
+
+            $product = Product::find($id);
+
+            if($product){
+
+                $product->name = $request->name;
+                $product->price = $request->price;
+                $product->quantity = $request->quantity;
+                $product->description = $request->description;
+    
+                // if($request->hasFile('image'))
+                // {
+                //     $path = $product->image;
+                //     if(File::exists($path)){
+                //         File::delete($path);
+                //     }
+                //     $image = $request->file('image');
+                //     $extension = $image->getClientOriginalExtension();
+                //     $image_name = time(). '.' .$extension;
+                //     $image->move('uploads/images', $image_name);
+                //     $product->image = 'uploads/images/' . $image_name;
+                // }
+    
+                $product->update();
+        
+                return response()->json([
+                    'status' => 200,
+                    'message' => "Updated successully",
+                ]);
+
+            }else{
+
+                return response()->json([
+                    'status' => 404,
+                    'message' => 'Product not found!',
+                ]);
+            }
+        }
+    }
+
 }
