@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,9 @@ use App\Http\Controllers\AuthController;
 
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
+
+
+Route::post('add-product', [ProductController::class, 'addProduct']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
