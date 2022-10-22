@@ -32,10 +32,17 @@ Route::get('products-category/{category}', [ProductController::class, 'getProduc
 
 
 
-Route::post('add-to-cart/{product_id}', [CartController::class, 'addToCart']);
-Route::get('cart-count', [CartController::class, 'getCartCount']);
-Route::get('get-cart-products', [CartController::class, 'getCartProducts']);
-Route::delete('remove-product/{id}', [CartController::class, 'removeProductFromCart']);
+Route::middleware(['auth:sanctum'])->group(function () {
+
+    Route::post('add-to-cart/{product_id}', [CartController::class, 'addToCart']);
+    Route::get('cart-count', [CartController::class, 'getCartCount']);
+    Route::get('get-cart-products', [CartController::class, 'getCartProducts']);
+    Route::delete('remove-product/{id}', [CartController::class, 'removeProductFromCart']);
+    
+});
+
+
+
 
 
 
