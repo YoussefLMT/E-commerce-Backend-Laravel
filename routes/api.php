@@ -34,6 +34,8 @@ Route::get('products-category/{category}', [ProductController::class, 'getProduc
 
 Route::middleware(['auth:sanctum'])->group(function () {
 
+    Route::post('logout', [AuthController::class, 'logOut']);
+
     Route::post('add-to-cart/{product_id}', [CartController::class, 'addToCart']);
     Route::get('cart-count', [CartController::class, 'getCartCount']);
     Route::get('get-cart-products', [CartController::class, 'getCartProducts']);
