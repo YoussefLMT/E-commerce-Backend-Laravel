@@ -33,6 +33,7 @@ Route::get('products-category/{category}', [ProductController::class, 'getProduc
 
 
 Route::post('add-to-cart/{product_id}', [CartController::class, 'addToCart']);
+Route::get('cart-count', [CartController::class, 'getCartCount']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
