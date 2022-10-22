@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,10 @@ Route::put('update-product/{id}', [ProductController::class, 'updateProduct']);
 Route::delete('delete-product/{id}', [ProductController::class, 'deleteProduct']);
 Route::get('specific-products', [ProductController::class, 'getSpecificProducts']);
 Route::get('products-category/{category}', [ProductController::class, 'getProductsByCategory']);
+
+
+
+Route::post('add-to-cart/{product_id}', [CartController::class, 'addToCart']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
