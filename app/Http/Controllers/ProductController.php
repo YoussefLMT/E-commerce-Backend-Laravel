@@ -186,4 +186,16 @@ class ProductController extends Controller
             'home_products' => $home_products
         ]);
     }
+
+
+
+    public function getProductsByCategory($category)
+    {
+        $products = Product::where('category', $category)->get();
+
+        return response()->json([
+            'status' => 200,
+            'products' => $products
+        ]);
+    }
 }
