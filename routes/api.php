@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,13 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('cart-count', [CartController::class, 'getCartCount']);
     Route::get('get-cart-products', [CartController::class, 'getCartProducts']);
     Route::delete('remove-product/{id}', [CartController::class, 'removeProductFromCart']);
+
+
+    Route::get('users', [UserController::class, 'getUsers']);
+    Route::post('add-user', [UserController::class, 'addUser']);
+    Route::get('get-user/{id}', [UserController::class, 'getUser']);
+    Route::put('update-user/{id}', [UserController::class, 'updateUser']);
+    Route::delete('delete-user/{id}', [UserController::class, 'deleteUser']);
     
 });
 
