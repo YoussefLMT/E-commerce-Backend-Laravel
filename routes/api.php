@@ -53,6 +53,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::get('total-price', [OrderController::class, 'getOrderTotalPrice']);
     Route::post('place-order', [OrderController::class, 'placeOrder']);
+    Route::get('get-user-orders', [OrderController::class, 'getUserOrders']);
 
     
 });

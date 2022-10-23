@@ -67,4 +67,31 @@ class OrderController extends Controller
             'message' => "Your order has been placed successfully",
         ]);
     }
+
+
+    function getUserOrders(){
+
+        $user_id = auth()->user()->id;
+
+        $user_orders = DB::table('orders')
+        ->join('order_products', 'order_products.order_id', '=', 'orders.id')
+        ->join('products', 'order_products.product_id', '=', 'products.id')
+        ->where('orders.user_id', $user_id)
+        ->get();
+
+        if($user_orders){
+
+            return response()->json([
+                'status' => 200,
+                'user_orders' =>  $user_orders
+            ]);
+
+        }else{
+
+            return response()->json([
+                'status' => 401,
+                'message' =>  "You don't have any order yet"
+            ]);
+        }
+    }
 }
