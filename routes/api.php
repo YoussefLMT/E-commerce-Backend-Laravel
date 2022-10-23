@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +49,10 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('get-user/{id}', [UserController::class, 'getUser']);
     Route::put('update-user/{id}', [UserController::class, 'updateUser']);
     Route::delete('delete-user/{id}', [UserController::class, 'deleteUser']);
+
+
+    Route::get('total-price', [OrderController::class, 'getOrderTotalPrice']);
+
     
 });
 
