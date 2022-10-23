@@ -49,4 +49,25 @@ class UserController extends Controller
         }
     }
 
+
+    public function getUser($id)
+    {
+        $user = User::find($id);
+
+        if($user){
+
+            return response()->json([
+                'status' => 200,
+                'user' => $user,
+            ]);
+
+        }else{
+
+            return response()->json([
+                'status' => 404,
+                'message' => 'User not found!'
+            ]);
+        }
+    }
+
 }
