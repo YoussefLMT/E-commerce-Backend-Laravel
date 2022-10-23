@@ -94,4 +94,15 @@ class OrderController extends Controller
             ]);
         }
     }
+
+
+    function getAllOrders(){
+
+        $orders = Order::all();
+
+        return response()->json([
+            'status' => 200,
+            'orders' =>  $orders
+        ]);
+    }
 }
