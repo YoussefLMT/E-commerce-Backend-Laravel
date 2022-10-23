@@ -53,7 +53,7 @@ class OrderController extends Controller
             $order_products = new OrderProduct;
             $order_products->order_id = $order->id;
             $order_products->product_id = $cart->product_id;
-            $order_products->product_quantity = $cart->product_quantity;
+            $order_products->product_quantity = $cart->quantity;
             $order_products->save();
 
             Product::where('id', $cart->product_id)->decrement('quantity', $cart->quantity);
