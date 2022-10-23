@@ -56,6 +56,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('get-user-orders', [OrderController::class, 'getUserOrders']);
     Route::get('get-orders', [OrderController::class, 'getAllOrders']);
     Route::get('get-order-products/{id}', [OrderController::class, 'getOrderProducts']);
+    Route::put('update-order-status/{id}', [OrderController::class, 'updateOrderStatus']);
 
     
 });
